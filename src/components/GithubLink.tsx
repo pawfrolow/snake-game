@@ -4,7 +4,7 @@ const GithubLink = () => {
     return (
         <a
             className="link"
-            href="https://github.com/pawfrolow/2048-game"
+            href="https://github.com/pawfrolow/snake-game"
             target="__blank"
         >
             <svg

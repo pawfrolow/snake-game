@@ -1,11 +1,11 @@
 import { YesNo, Difficults } from "../types/enums";
 import { SettingsType } from "../types/types";
-import { detectMobile } from "../utils";
 
 type ConfigType = {
     initSnake: number[],
     speed: Record<`${Difficults}`, number>,
-    initSettings: SettingsType
+    initSettings: SettingsType,
+    speedIncreasePercent: number
 }
 
 const config: ConfigType = {
@@ -18,9 +18,11 @@ const config: ConfigType = {
     },
     initSettings: {
         difficult: Difficults.normal,
-        is3D: detectMobile() ? YesNo.no : YesNo.yes,
+        is3D: YesNo.yes,
         borders: YesNo.no,
+        buttons: window.screen.availWidth < 821 ? YesNo.yes : YesNo.no
     },
+    speedIncreasePercent: 0.08
 };
 
 export default config;

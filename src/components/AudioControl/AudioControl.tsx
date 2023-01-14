@@ -7,12 +7,10 @@ import styles from "./style.module.scss";
 
 const collection = utils.randomiseArray([
     "Deja Vu.mp3",
-    "MACINTOSH PLUS.mp3",
-    "Miami Disco.mp3",
     "Nightcall.mp3",
     "Rockit.mp3",
     "West Side Lane.mp3",
-    "mk.mp3"
+    "Mortal Kombat.mp3"
 ])
 
 const AudioControl = () => {
@@ -43,6 +41,7 @@ const AudioControl = () => {
             className={classNames(styles.container, play && styles.playing)}
             onClick={() => setPlay(!play)}
         >
+            <div className={styles.name}>{collection[track.current].split('.')[0]}</div>
             <audio ref={audio} />
         </div>
     );

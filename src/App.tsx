@@ -9,15 +9,14 @@ import {
     GameOver,
     SettingsModal,
     AudioControl,
+    SettingsInfo,
+    ScreenButtons,
 } from "./components";
 import config from "./config";
 import { useEvent, useInterval, useSwipe } from "./hooks";
 import "./styles/app.scss";
 import { Directions } from "./types/enums";
-import {
-    DirectionsType,
-    SettingsModalRefType
-} from "./types/types";
+import { DirectionsType, SettingsModalRefType, SettingsType } from "./types/types";
 import * as utils from "./utils";
 
 const App = () => {
@@ -38,10 +37,14 @@ const App = () => {
     const directionChangeAccept = useRef(true);
 
     const swipeHandler = (direction: DirectionsType) => {
-        if (!utils.detectMobile()) return;
-        console.log(direction)
         changeDirection(direction);
     };
+
+    useEffect(() => {
+        if(localStorage.getItem('snake-settings')) {
+            setSettings(JSON.parse(localStorage.getItem('snake-settings') as string) as SettingsType)
+        }
+    }, [])
 
     useSwipe(swipeHandler);
 
@@ -81,7 +84,7 @@ const App = () => {
     const keyHandler = (e: KeyboardEvent) => {
         Object.values(Directions).forEach((dir) => {
             if (e.key.toLowerCase() === `arrow${dir}`) {
-                changeDirection(dir)
+                changeDirection(dir);
             }
         });
     };
@@ -109,7 +112,7 @@ const App = () => {
         setDirection(dir);
 
         directionChangeAccept.current = false;
-    }
+    };
 
     const move = () => {
         const directionSize = Math.sqrt(size);
@@ -205,7 +208,7 @@ const App = () => {
         let baseSpeed = config.speed[settings.difficult];
 
         [...Array(Math.floor(score / 5))].forEach((step) => {
-            baseSpeed = baseSpeed - baseSpeed * 0.05;
+            baseSpeed = baseSpeed - baseSpeed * config.speedIncreasePercent;
         });
 
         return Math.ceil(baseSpeed);
@@ -220,15 +223,11 @@ const App = () => {
             <Header />
             <Controls>
                 <Score score={score} />
-                <div
-                    className='controls-row'
-                >
+                <div className="controls-row">
                     <AudioControl />
                     <div
                         className="settings"
-                        onClick={() =>
-                            settingsModal.current.open(settings)
-                        }
+                        onClick={() => settingsModal.current.open(settings)}
                     />
                     <NewGameBtn
                         gaming={gaming}
@@ -237,7 +236,7 @@ const App = () => {
                 </div>
             </Controls>
             <div style={{ position: "relative" }}>
-                <Field gameOver={gameOver} is3d={settings.is3D === 'yes'}>
+                <Field gameOver={gameOver} is3d={settings.is3D === "yes"}>
                     {[...Array(size).keys()].map((cell) => {
                         const isSnake = snake.includes(cell);
                         const isSnakeHead =
@@ -249,19 +248,22 @@ const App = () => {
                                 snake={isSnake}
                                 direction={direction}
                                 head={isSnakeHead}
-                                is3D={settings.is3D === 'yes'}
+                                is3D={settings.is3D === "yes"}
                             />
                         );
                     })}
                 </Field>
                 {gameOver && <GameOver />}
             </div>
-            <div className='settings-info'>
-                <div>DIFFUCULT: {settings.difficult}</div>
-                <div>BORDERS: {settings.borders}</div>
-                <div>3D: {settings.is3D}</div>
-            </div>
-            <SettingsModal onConfirm={(set) => setSettings(set)} ref={settingsModal} />
+            {settings.buttons === 'yes' && <ScreenButtons onClick={changeDirection} />}
+            <SettingsInfo settings={settings} />
+            <SettingsModal
+                onConfirm={(set) => {
+                    setSettings(set);
+                    localStorage.setItem('snake-settings', JSON.stringify(set))
+                }}
+                ref={settingsModal}
+            />
         </div>
     );
 };

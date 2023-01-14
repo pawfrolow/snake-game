@@ -18,11 +18,11 @@ const Cell: FC<Props> = ({ snake, food, head, direction, is3D }) => {
         snake && styles.snake, 
         food && styles.food,
         head && styles.head,
-        head && styles[`head-${direction}`],
+        //head && styles[`head-${direction}`],
         is3D && styles.is3D
 
     )}>
-        {head && <div className={styles.tongue} />}
+        {/* head && <div className={styles.tongue} /> */}
         {food && <div className={styles.foodInner} />}
     </div>
   )

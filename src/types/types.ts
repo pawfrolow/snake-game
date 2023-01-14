@@ -12,5 +12,6 @@ export type SettingsModalRefType = {
 export type SettingsType = {
     is3D: YesNoType,
     borders: YesNoType,
+    buttons: YesNoType,
     difficult: DifficultType
 }

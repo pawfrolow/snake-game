@@ -16,7 +16,7 @@ const NewGameBtn: FC<Props> = ({ onClick, gaming }) => {
                     <span></span>
                     <span></span>
                     <span></span>
-                    RESET
+                    RETRY
                 </Fragment>
             ) : (
                 <Fragment>

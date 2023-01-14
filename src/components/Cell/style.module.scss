@@ -13,6 +13,7 @@
         border: 0;
         opacity: 0.9;
         z-index: 1;
+        box-shadow: 0px 0px 8px 1px #a120f6;
     }
     &.food {
         z-index: 1;
@@ -99,7 +100,7 @@
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 820px) {
     .cell {
         width: 12px;
         height: 12px;
@@ -122,6 +123,10 @@
             &:after {
                 bottom: -2.5px;
             }
+        }
+        &.is3D {
+            width: 12px;
+            height: 10px;
         }
     }
 }

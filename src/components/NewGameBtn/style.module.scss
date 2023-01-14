@@ -22,3 +22,10 @@
         animation: none;
     }
 }
+
+@media screen and (max-width: 720px) {
+    .new-game {
+        font-size: 24px;
+        padding: 8px 16px;
+    }
+}

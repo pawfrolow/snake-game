@@ -78,6 +78,15 @@ const SettingsModal = forwardRef<SettingsModalRefType, Props>(({ onConfirm }, re
                         })}
                         title="3d"
                     />
+                    <ControlSelect
+                        value={settings.buttons}
+                        values={Object.values(YesNo)}
+                        onChange={(value) => setSettings({
+                            ...settings,
+                            buttons: value as YesNoType
+                        })}
+                        title="Screen buttons"
+                    />
                     <div className={styles.confirm} onClick={confirm}>CONFIRM</div>
                 </div>
                 

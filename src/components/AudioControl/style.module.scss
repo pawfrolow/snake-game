@@ -8,6 +8,7 @@
     background-position: center;
     margin-right: 16px;
     cursor: pointer;
+    position: relative;
     &:hover {
         background-color: #03e9f4;
         box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
@@ -17,5 +18,25 @@
     }
     &.playing {
         background-image: url(../../assets/images/speaker.png);
+    }
+    .name {
+        position: absolute;
+        right: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #00ff3c;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .name {
+        display: none;
+    }
+    .container {
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+        background-size: 28px;
     }
 }

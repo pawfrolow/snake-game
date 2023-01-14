@@ -59,16 +59,14 @@ body,
     justify-content: space-between;
 }
 
-.settings-info {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    color: #03e9f4;
-}
-
 @media screen and (max-width: 720px) {
     .controls-row {
         justify-content: center;
     }
+    .settings {
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+        background-size: 28px;
+    }
 }
-

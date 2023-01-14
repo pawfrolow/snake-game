@@ -1,0 +1,127 @@
+.cell {
+    width: 16px;
+    height: 16px;
+    background: #100230;
+    box-sizing: border-box;
+    border: 0.05px solid rgba(171, 39, 71, 0.3);
+    position: relative;
+    &.is3D {
+        width: 24px;
+    }
+    &.snake {
+        background: #a120f6;
+        border: 0;
+        opacity: 0.9;
+        z-index: 1;
+    }
+    &.food {
+        z-index: 1;
+        .foodInner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            background: #f8db94;
+            box-shadow: 0px 0px 8px 4px #ab2747;
+            border-radius: 6px;
+        }
+    }
+    &.head {
+        opacity: 1;
+    }
+
+    .tongue {
+        position: absolute;
+        background: red;
+        z-index: 1;
+        width: 6px;
+        height: 2px;
+    }
+
+    &.head-right {
+        &:after {
+            content: ':';
+            position: absolute;
+            right: 2px;
+            color: #000;
+        }
+        .tongue {
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &.head-down {
+        &:after {
+            content: ':';
+            position: absolute;
+            color: #000;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+            top: 4px;
+        }
+        .tongue {
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+    }
+    &.head-up {
+        &:after {
+            content: ':';
+            position: absolute;
+            color: #000;
+            left: 50%;
+            transform: translateX(-50%) rotate(270deg);
+            bottom: 4px;
+        }
+        .tongue {
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+    }
+    &.head-left {
+        &:after {
+            content: ':';
+            position: absolute;
+            color: #000;
+            left: 4px;
+        }
+        .tongue {
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .cell {
+        width: 12px;
+        height: 12px;
+        &.head-right {
+            &:after {
+                bottom: -2.5px;
+            }
+        }
+        &.head-up {
+            &:after {
+                bottom: 2px;
+            }
+        }
+        &.head-down {
+            &:after {
+                top: 2px;
+            }
+        }
+        &.head-left {
+            &:after {
+                bottom: -2.5px;
+            }
+        }
+    }
+}

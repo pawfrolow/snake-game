@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    position: relative;
+    &:after {
+        content: "";
+        height: 2px;
+        width: calc(100% - 24px * 2);
+        border-radius: 2px;
+        background: linear-gradient(#00ff3c, #00fcff);
+        position: absolute;
+        bottom: -4px;
+        left: 24px;
+        right: 24px;
+    }
+    .title {
+        margin: 0;
+        background: -webkit-linear-gradient(#00ff3c, #00fcff);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 56px;
+        position: relative;
+        &:after {
+            content: "by pawfrolow";
+            background: -webkit-linear-gradient(#00ff3c, #00fcff);
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: absolute;
+            bottom: 0px;
+            right: -64px;
+            font-size: 12px;
+            font-style: italic;
+            transform: rotate(-15deg);
+        }
+    }
+    .install {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        background-image: url(../../assets/images/downloading.png);
+        background-size: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 24px;
+        cursor: pointer;
+        &:hover {
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
+                0 0 50px #03e9f4;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+            animation: none;
+        }
+    }
+}

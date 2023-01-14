@@ -1,0 +1,33 @@
+.speed-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    .speed-text {
+        color: #fff;
+        font-size: 24px;
+    }
+    .radio-group {
+        .radio-item {
+            background: none;
+            border: none;
+            outline: none;
+            display: block;
+            font-family: "Common Pixel";
+            font-size: 18px;
+            position: relative;
+            padding: 3px 8px 3px 12px;
+            color: #fff;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+            user-select: none;
+            cursor: pointer;
+            &:hover {
+                transform: scale3d(1.35, 1.35, 1.35) translateX(8px);
+            }
+            &.checked {
+                text-decoration: underline;
+                color: hsla(183, 100%, 50%, 1);
+            }
+        }
+    }
+}

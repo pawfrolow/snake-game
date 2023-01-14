@@ -1,0 +1,24 @@
+.new-game {
+    padding: 8px 32px;
+    font-family: "Common Pixel";
+    font-size: 36px;
+    color: hsla(183, 100%, 50%, 1);
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    background: none;
+    position: relative;
+    text-shadow: 0 0 0.05em hsla(183, 100%, 50%, 0.9),
+        0 0 0.15em hsla(183, 100%, 50%, 0.7),
+        0 0 0.3em hsla(183, 100%, 50%, 0.5);
+    animation: 2.5s ease-in-out infinite neon-sign;
+    transition: all 0.2s ease;
+    &:hover {
+        background: #03e9f4;
+        color: #005053;
+        box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
+            0 0 50px #03e9f4;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        animation: none;
+    }
+}

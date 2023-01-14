@@ -1,0 +1,62 @@
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.modal {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 50vh;
+    background: linear-gradient(to bottom right, #2b53af 0%, #6733bc 70%);
+    border: 4px solid #fff;
+    box-sizing: border-box;
+    .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+        box-sizing: border-box;
+        .close {
+            width: 36px;
+            height: 36px;
+            padding: 8px;
+            background-image: url(../../assets/images/close.png);
+            background-size: 32px;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .confirm {
+            cursor: pointer;
+            position: absolute;
+            font-size: 28px;
+            bottom: 16px;
+            right: 16px;
+            color: hsla(183, 100%, 50%, 1);
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .modal {
+        width: 90vw;
+    }
+}

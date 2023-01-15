@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
     Cell,
     Controls,
@@ -16,7 +16,11 @@ import config from "./config";
 import { useEvent, useInterval, useSwipe } from "./hooks";
 import "./styles/app.scss";
 import { Directions } from "./types/enums";
-import { DirectionsType, SettingsModalRefType, SettingsType } from "./types/types";
+import {
+    DirectionsType,
+    SettingsModalRefType,
+    SettingsType,
+} from "./types/types";
 import * as utils from "./utils";
 
 const App = () => {
@@ -33,18 +37,23 @@ const App = () => {
     const [settings, setSettings] = useState(config.initSettings);
     const settingsModal =
         useRef() as React.MutableRefObject<SettingsModalRefType>;
-    const score = snake.length - 3;
     const directionChangeAccept = useRef(true);
+    const score = snake.length - 3;
+    const level = Math.floor(score / 5) + 1;
 
     const swipeHandler = (direction: DirectionsType) => {
         changeDirection(direction);
     };
 
     useEffect(() => {
-        if(localStorage.getItem('snake-settings')) {
-            setSettings(JSON.parse(localStorage.getItem('snake-settings') as string) as SettingsType)
+        if (localStorage.getItem("snake-settings")) {
+            setSettings(
+                JSON.parse(
+                    localStorage.getItem("snake-settings") as string
+                ) as SettingsType
+            );
         }
-    }, [])
+    }, []);
 
     useSwipe(swipeHandler);
 
@@ -204,17 +213,17 @@ const App = () => {
         }
     };
 
-    const getSpeed = () => {
-        let baseSpeed = config.speed[settings.difficult];
+    const getSpeed = useMemo(() => {
+        let speed = config.speed[settings.difficult];
 
         [...Array(Math.floor(score / 5))].forEach((step) => {
-            baseSpeed = baseSpeed - baseSpeed * config.speedIncreasePercent;
+            speed = speed - speed * config.speedIncreasePercent;
         });
 
-        return Math.ceil(baseSpeed);
-    };
+        return Math.ceil(speed);
+    }, [level, settings.difficult]);
 
-    useInterval(move, gameOver || !gaming ? null : getSpeed());
+    useInterval(move, gameOver || !gaming ? null : getSpeed);
 
     useEvent("keydown", keyHandler);
 
@@ -239,15 +248,11 @@ const App = () => {
                 <Field gameOver={gameOver} is3d={settings.is3D === "yes"}>
                     {[...Array(size).keys()].map((cell) => {
                         const isSnake = snake.includes(cell);
-                        const isSnakeHead =
-                            isSnake && cell === snake[snake.length - 1];
                         return (
                             <Cell
                                 key={cell}
                                 food={cell === food}
                                 snake={isSnake}
-                                direction={direction}
-                                head={isSnakeHead}
                                 is3D={settings.is3D === "yes"}
                             />
                         );
@@ -255,12 +260,14 @@ const App = () => {
                 </Field>
                 {gameOver && <GameOver />}
             </div>
-            {settings.buttons === 'yes' && <ScreenButtons onClick={changeDirection} />}
+            {settings.buttons === "yes" && (
+                <ScreenButtons onClick={changeDirection} />
+            )}
             <SettingsInfo settings={settings} />
             <SettingsModal
                 onConfirm={(set) => {
                     setSettings(set);
-                    localStorage.setItem('snake-settings', JSON.stringify(set))
+                    localStorage.setItem("snake-settings", JSON.stringify(set));
                 }}
                 ref={settingsModal}
             />

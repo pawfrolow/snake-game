@@ -1,24 +1,6 @@
 .container {
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-    background-image: url(../../assets/images/mute.png);
-    background-size: 32px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-right: 16px;
-    cursor: pointer;
     position: relative;
-    &:hover {
-        background-color: #03e9f4;
-        box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
-            0 0 50px #03e9f4;
-        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-        animation: none;
-    }
-    &.playing {
-        background-image: url(../../assets/images/speaker.png);
-    }
+    display: flex;
     .name {
         position: absolute;
         right: 120%;
@@ -27,6 +9,47 @@
         color: #00ff3c;
         font-size: 18px;
     }
+    .volume {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        background-image: url(../../assets/images/mute.png);
+        background-size: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        margin-right: 16px;
+        position: relative;
+        &:hover {
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
+                0 0 50px #03e9f4;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+            animation: none;
+        }
+        &.playing {
+            background-image: url(../../assets/images/speaker.png);
+        }
+    }
+    .forward {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        background-image: url(../../assets/images/forward.png);
+        background-size: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        margin-right: 16px;
+        position: relative;
+        &:hover {
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4, 0 0 5px #03e9f4, 0 0 5px #03e9f4,
+                0 0 50px #03e9f4;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+            animation: none;
+        }
+    }
 }
 
 @media screen and (max-width: 720px) {
@@ -34,9 +57,12 @@
         display: none;
     }
     .container {
-        margin-right: 8px;
-        width: 32px;
-        height: 32px;
-        background-size: 28px;
+        .volume, .forward {
+            margin-right: 4px;
+            width: 28px;
+            height: 28px;
+            background-size: 24px;
+        }
     }
+    
 }

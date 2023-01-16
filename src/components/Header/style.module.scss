@@ -53,3 +53,14 @@
         }
     }
 }
+
+@media screen and (max-width: 720px) {
+    .header {
+        padding: 12px;
+        &:after {
+            width: calc(100% - 12px * 2);
+            left: 12px;
+            right: 12px;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { LegacyRef, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import * as utils from "../../utils";
@@ -28,7 +28,6 @@ const AudioControl = () => {
 
     useEffect(() => {
         if(audio.current) {
-            
             if(play) {
                 audio.current.play()
             }
@@ -48,7 +47,7 @@ const AudioControl = () => {
                 audio.current.play();
             }
         }
-    }, [track])
+    }, [play, track])
 
     const next = () => {
         if (track + 1 === collection.length) {

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7b5d193e.css",
+    "main.js": "/static/js/main.3dc60903.js",
+    "static/js/787.786e9145.chunk.js": "/static/js/787.786e9145.chunk.js",
+    "static/media/Deja Vu.mp3": "/static/media/Deja Vu.459acc2732e2c00e99e7.mp3",
+    "static/media/Nightcall.mp3": "/static/media/Nightcall.e49f6e3bcff3fa4029b5.mp3",
+    "static/media/West Side Lane.mp3": "/static/media/West Side Lane.d8e2296fc504e1234761.mp3",
+    "static/media/Rockit.mp3": "/static/media/Rockit.f2c525ea3c64fed4659a.mp3",
+    "static/media/Mortal Kombat.mp3": "/static/media/Mortal Kombat.18c932c9bc6d6a8824b9.mp3",
+    "static/media/giphy.gif": "/static/media/giphy.533b325db79f199512f8.gif",
+    "service-worker.js": "/service-worker.js",
+    "static/media/COMMP.TTF": "/static/media/COMMP.f90ced094fb66c0feb12.TTF",
+    "index.html": "/index.html",
+    "main.7b5d193e.css.map": "/static/css/main.7b5d193e.css.map",
+    "main.3dc60903.js.map": "/static/js/main.3dc60903.js.map",
+    "787.786e9145.chunk.js.map": "/static/js/787.786e9145.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b5d193e.css",
+    "static/js/main.3dc60903.js"
+  ]
+}
